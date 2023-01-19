@@ -1,0 +1,198 @@
+<section class="vh-100 mt-3 fixed">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid"
+          alt="Sample image"
+        />
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form #regForm="ngForm" (ngSubmit)="onSubmit()">
+          <div
+            class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+          >
+            <p class="lead fw-normal mb-4 me-3">Register here</p>
+          </div>
+
+          <!-- displaying error from fonted -->
+
+          <!-- displaying error from backend -->
+          <div class="alert alert-danger text-justify" [hidden]="!error">
+            {{ error }}
+          </div>
+          <!--  input -->
+          <div *ngIf="name.touched && !name.valid" class="text-danger">
+            <div *ngIf="name.errors && name.errors['required']">
+              Full Name is required.
+            </div>
+            <div *ngIf="name.errors && name.errors['minlength']">
+              Full name is minimum
+              {{ name.errors && name.errors["minlength"].requiredLength }}
+              character.
+            </div>
+            <div *ngIf="name.errors && name.errors['maxlength']">
+              Full Name is maximum 10 character.
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              minlength="3"
+              maxlength="20"
+              #name="ngModel"
+              required
+              [(ngModel)]="form.name"
+              class="form-control form-control-lg"
+              placeholder="Enter your name "
+              name="name"
+              [ngClass]="{
+                'border border-danger': name.errors && name.touched
+              }"
+            />
+          </div>
+
+          <div *ngIf="username.touched && !username.valid" class="text-danger">
+            <div *ngIf="username.errors && username.errors['required']">
+              User Name is required.
+            </div>
+            <div *ngIf="username.errors && username.errors['minlength']">
+              User name is minimum
+              {{
+                username.errors && username.errors["minlength"].requiredLength
+              }}
+              character.
+            </div>
+            <div *ngIf="username.errors && username.errors['maxlength']">
+              User Name is maximum 10 character.
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+              required
+              [(ngModel)]="form.username"
+              class="form-control form-control-lg"
+              placeholder="Enter username"
+              name="username"
+              [ngClass]="{
+                'border border-danger': username.errors && username.touched
+              }"
+            />
+          </div>
+
+          <div *ngIf="email.touched && !email.valid" class="text-danger">
+            <div *ngIf="email.errors && email.errors['required']">
+              Email required*
+            </div>
+            <div *ngIf="email.errors && email.errors['email']">
+              enter valid email
+            </div>
+          </div>
+          <div class="form-outline mb-4">
+            <input
+              email
+              required
+              #email="ngModel"
+              type="text"
+              [(ngModel)]="form.email"
+              name="email"
+              class="form-control form-control-lg"
+              placeholder="Enter email"
+              [ngClass]="{
+                'border border-danger': email.errors && email.touched
+              }"
+            />
+          </div>
+
+          <div *ngIf="password.touched && !password.valid" class="text-danger">
+            <div *ngIf="password.errors && password.errors['required']">
+              password required*
+            </div>
+            <div *ngIf="password.errors && password.errors['pattern']">
+              Must contain at least one letter, at least one number, and be
+              longer than six charaters
+            </div>
+          </div>
+
+          <div class="form-outline mb-3">
+            <input
+              #password="ngModel"
+              type="password"
+              id="form3Example4"
+              class="form-control form-control-lg"
+              matInput
+              required
+              type="password"
+              minlength="6"
+              [(ngModel)]="form.password"
+              name="password"
+              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+              placeholder="Enter password"
+              [ngClass]="{
+                'border border-danger': password.errors && password.touched
+              }"
+            />
+          </div>
+
+          <div
+            *ngIf="confirmPassword.touched && !confirmPassword.valid"
+            class="text-danger"
+          >
+            <div *ngIf="password.errors && password.errors['required']">
+              password required*
+            </div>
+            <div
+              *ngIf="
+                confirmPassword.errors && confirmPassword.errors['pattern']
+              "
+            >
+              Password & Confirm Password does not match.
+            </div>
+          </div>
+
+          <div class="form-outline mb-3">
+            <input
+              [(ngModel)]="form.confirmPassword"
+              placeholder="confirm your password"
+              #confirmPassword="ngModel"
+              name="confirmPassword"
+              matInput
+              required
+              name="confirmPassword"
+              type="password"
+              #confirmpassword="ngModel"
+              pattern="{{ password.value }}"
+              class="form-control form-control-lg"
+              [ngClass]="{
+                'border border-danger':
+                  confirmPassword.errors && confirmPassword.touched
+              }"
+            />
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem"
+              [disabled]="!regForm.valid"
+              type="submit"
+            >
+              Register
+            </button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">
+              Do you want to Login ?
+              <a [routerLink]="['/login']" class="link-danger">click her</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

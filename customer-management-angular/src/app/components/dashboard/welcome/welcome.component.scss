@@ -1,0 +1,12 @@
+.box {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+  }
+  .items {
+    width: auto;
+    height: auto;
+    margin: 6px;
+    flex: 1;
+    flex-basis: 20%;
+  }

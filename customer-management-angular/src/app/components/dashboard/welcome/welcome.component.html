@@ -1,0 +1,47 @@
+<app-nav-bar></app-nav-bar>
+<div class="d-flex justify-content-center mt-4" *ngIf="!authenticatedUser">
+  <!-- adding customer component -->
+  <app-add-customer></app-add-customer>
+</div>
+
+<div class="container mt-3">
+  <h4 *ngIf="AllCustomer.length > 0">Customers</h4>
+
+  <!-- displaying all customer -->
+  <div class="box mt-4">
+    <div class="items" *ngFor="let customer of AllCustomer">
+      <!-- single customer compenet -->
+      <app-customer [customer]="customer"></app-customer>
+    </div>
+  </div>
+
+  <!-- if there is no customer in database -->
+  <h1 *ngIf="AllCustomer.length <= 0" class="text-primary mt-2">
+    There is no customer Please add a new customer
+  </h1>
+
+  <!-- displaying pagination -->
+  <nav aria-label="..." *ngIf="AllCustomer.length > 0">
+    <ul class="pagination float-right m-2">
+      <li class="page-item">
+        <a class="page-link" (click)="nextPage(pageNo - 1)">Previous</a>
+      </li>
+
+      <div *ngFor="let n of totalPages">
+        <li class="page-item" [class.active]="n === pageNo">
+          <a
+            class="page-link"
+            (click)="nextPage(n)"
+            [class.active]="n === pageNo"
+            [class.disabled]="last"
+            >{{ n + 1 }}</a
+          >
+        </li>
+      </div>
+
+      <li class="page-item">
+        <a class="page-link" (click)="nextPage(pageNo + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

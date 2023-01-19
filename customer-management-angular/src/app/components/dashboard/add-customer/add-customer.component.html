@@ -1,0 +1,159 @@
+<form novalidate (ngSubmit)="save()" [formGroup]="customerForm" >
+  <div class="row align-items-center g-3">
+    <div class="col-auto">
+      <label class="form-check-label">First name</label>
+
+      <input
+        class="form-control"
+        id="firstNameId"
+        type="text"
+        placeholder="First Name (required)"
+        formControlName="firstName"
+        [ngClass]="{
+          'is-invalid':
+            (customerForm.get('firstName')?.touched ||
+              customerForm.get('firstName')?.dirty) &&
+            !customerForm.get('firstName')?.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="customerForm.get('firstName')?.errors?.['required']">
+          Required field*.
+        </span>
+        <span *ngIf="customerForm.get('firstName')?.errors?.['minlength']">
+          Longer than 3 characters.
+        </span>
+        <span *ngIf="customerForm.get('firstName')?.errors?.['maxlength']">
+          Not be longer than 20 characters.
+        </span>
+      </span>
+    </div>
+
+    <div class="col-auto">
+      <label class="form-check-label">Last name</label>
+
+      <input
+        class="form-control"
+        id="firstNameId"
+        type="text"
+        placeholder="lastName Name (required)"
+        formControlName="lastName"
+        [ngClass]="{
+          'is-invalid':
+            (customerForm.get('lastName')?.touched ||
+              customerForm.get('lastName')?.dirty) &&
+            !customerForm.get('lastName')?.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="customerForm.get('lastName')?.errors?.['required']">
+          Required field*.
+        </span>
+        <span *ngIf="customerForm.get('lastName')?.errors?.['minlength']">
+          Longer than 3 characters.
+        </span>
+        <span *ngIf="customerForm.get('lastName')?.errors?.['maxlength']">
+          Not be longer than 20 characters.
+        </span>
+      </span>
+    </div>
+
+    <div class="col-auto">
+      <label class="form-check-label">Phone Number</label>
+
+      <input
+        class="form-control"
+        id="firstNameId"
+        type="text"
+        placeholder="phone Name (required)"
+        formControlName="phone"
+        [ngClass]="{
+          'is-invalid':
+            (customerForm.get('phone')?.touched ||
+              customerForm.get('phone')?.dirty) &&
+            !customerForm.get('phone')?.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="customerForm.get('phone')?.errors?.['required']">
+          Required field*.
+        </span>
+        <span *ngIf="customerForm.get('phone')?.errors?.['minlength']">
+          Longer than 3 characters.
+        </span>
+        <span *ngIf="customerForm.get('phone')?.errors?.['pattern']">
+          Phone number should be numeric.
+        </span>
+        <span *ngIf="customerForm.get('phone')?.errors?.['maxlength']">
+          Not be longer than 10 characters.
+        </span>
+      </span>
+    </div>
+
+    <div class="col-auto">
+      <label class="form-check-label">City name</label>
+
+      <input
+        class="form-control"
+        id="city"
+        type="text"
+        placeholder="city Name (required)"
+        formControlName="city"
+        [ngClass]="{
+          'is-invalid':
+            (customerForm.get('city')?.touched ||
+              customerForm.get('city')?.dirty) &&
+            !customerForm.get('city')?.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="customerForm.get('city')?.errors?.['required']">
+          Required field*.
+        </span>
+        <span *ngIf="customerForm.get('city')?.errors?.['minlength']">
+          Longer than 3 characters.
+        </span>
+        <span *ngIf="customerForm.get('city')?.errors?.['maxlength']">
+          Not be longer than 20 characters.
+        </span>
+      </span>
+    </div>
+    <div class="col-auto">
+      <label class="form-check-label">Description</label>
+
+      <input
+        class="form-control"
+        id="description"
+        type="text"
+        placeholder="description Name (required)"
+        formControlName="description"
+        [ngClass]="{
+          'is-invalid':
+            (customerForm.get('description')?.touched ||
+              customerForm.get('description')?.dirty) &&
+            !customerForm.get('description')?.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="customerForm.get('description')?.errors?.['required']">
+          Required field*.
+        </span>
+        <span *ngIf="customerForm.get('description')?.errors?.['minlength']">
+          Longer than 3 characters.
+        </span>
+        <span *ngIf="customerForm.get('description')?.errors?.['maxlength']">
+          Not be longer than 20 characters.
+        </span>
+      </span>
+    </div>
+    <div class="col-auto mt-4">
+      <button
+        [disabled]="!customerForm.valid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Add Customer
+      </button>
+    </div>
+  </div>
+</form>
